@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # WARPAssessment
 Assessment for QA Engineer
 =======
@@ -30,6 +30,3 @@ Answer for this is in file under src/main/java/CriticalThinkingDesign/3.1
 # 3.2 ) Performance and Security Integration 3.2.1, 3.2.2, 3.2.3
 Answer for this is in file under src/main/java/CriticalThinkingDesign/3.2
 
-
-
->>>>>>> 30481fd (Initial project push)
