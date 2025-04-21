@@ -1,0 +1,26 @@
+1. Maintaining a stable and effective test automation suite in this dynamic environment -
+
+    a. We can maintain a Page Object Model for UI tests to isolate page structure changes
+    b. We can create Data builder patterns for flexible data objects
+    c. We can create independent small test suites like smoke, sanity etc
+    d. We can maintain a log file to capture all steps that are executed
+    e. We can implement health checks that run automatically via CRON =
+    f. We can also send alerts if a test case fails 5 or more time in last 10 runs
+
+2.  Importance of testability and collaboration with developers -
+
+    a. Collaboration with devs is important because it allows testers to understand, plan and prepare test cases for upcoming changes
+    b. We can provide feedback to devs to add data test ids to be added during development
+    c. We can ask devs to provide APIs that support controlled data, dry-run modes etc
+    d. We can also share dashboards
+    e. By implementing CI, we can expose failing tests to devs in pull requests
+
+3. Handle versioning of test scripts, and test data -
+
+    a. We can use GIT/Bitbucket to maintain our test scripts
+    b. We can follow defined naming conventions for every branch that gets created
+    c. We can add versions to every API that gets developed
+    d. We can build test data dynamically by using builder patterns
+    e. We can also store test data in data templates like /resources/test-data/1.4. This allows fallback to latest available test data if needed
+    f. We can also categorize our test data based on environment like PROD/UAT/SIT
+

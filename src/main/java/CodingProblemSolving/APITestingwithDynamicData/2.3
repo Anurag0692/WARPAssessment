@@ -1,0 +1,31 @@
+1. Systematic approach to debugging the issue which happens intermittently in a specific environment -
+
+    a. We can run the failing test multiple times in target environment
+    b. We can extract logs, test data and environment variables
+    c. We can compare runs that pass in other environment
+    d. We can check if the issue is related to data or infrastructure
+    e. We can check it persists only after deployment
+    f. We can try and isolate it to UI/API/DB
+
+2. Tools and techniques you would use to gather information and identify the root cause -
+
+    a. We can enable debug logging for the test run like stack trace and timestamps
+    b. We can take screenshots and capture video if needed
+    c. We can compare environment variables
+    d. We can use Datadog for API observability
+    e. We can use WebSocket failures to check Network activities
+
+3. Examples of log analysis, network monitoring, and code inspection techniques -
+
+    a. We can check error timestamps within logs - grep "error message" SystemOut.log | grep "2025-01-01 10:23"
+    b. We can enable DevTools > Network tab and check for API delays, 401/403 errors, missing requests etc
+    c. We can check our code for conditions like if(environment.equals("UAT")){} and then check environment specific tags
+    d. We can check if there are any time based logic
+
+4. Create a robust report to give to the development team -
+
+    a. We can define a template that describes how an issue can should be logged for devs.
+        For example - We can define title, description, screenshots, steps to reproduce, impact, analysis and suggested fix
+
+
+

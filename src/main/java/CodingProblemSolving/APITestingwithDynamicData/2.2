@@ -1,0 +1,45 @@
+1. Test cases -
+
+    a. Valid login for all roles
+        Input: Credentials for Admin, Editor, Viewer
+        Verification: Is access token returned
+        Check: API returned 200 ok status?
+
+    b. Invalid login
+        Input: wrong credentials or expired token
+        Expected: Error returned should be 403 unauthorized or forbidden
+
+    c. Access control enforcement
+        Input: Viewer attempts to call admin only endpoint
+        Expected: 403 Forbidden error
+
+2. Data validation with complex input structures -
+
+    a. For a valid payload, API should return a response with includes a status 200 or variable id that can be used
+    b. For invalid payload, API should return a status code 400 Bad Request along with a meaningful error message
+    c. For fields that are needed, API should return a 400 status with meaningful message that tells what field is missing
+
+3. Handling edge cases and error scenarios -
+
+    a. Rate limiting - We can hit an endpoint rapidly with same user token and check if it returns error 429
+    b. Data Conflict - We can hit an endpoint twice with same details and check if it returns error 409 along with a meaningful error message
+    c. Empty arrays - We can hit an endpoint with a filed as null and check if it returns a valid error or not
+
+Handling  of dynamic data dependencies between API requests -
+
+    a. POST /users - creates a new user and will return a userID
+    b. POST /orders with the userId - will return an orderID
+    c. PATCH /orders/{orderId} - this will update the status of the order
+    d. GET /orders/{orderId} - this will fetch the status of order
+    e. DELETE /users/{userId} - this should fail if the user still has an active order
+
+    To pass userID and orderID dynamically, we need a shared JAVA class that can handle this.
+    SharedCode.put("userID", response.path("ID"));
+    String userId = SharedCode.get("userID");
+
+Tests for performance and security -
+
+    a. We can alter auth token manually and then check the error message
+    b. We can test if a viewer can access endpoint exposed to an admin user
+    c. Pass invalid JSON to an endpoint to check the error returned
+    d. We can use JMeter to hit an endpoint with 1000+ requests and verify response time

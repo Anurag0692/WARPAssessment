@@ -1,0 +1,28 @@
+1. Integrating performance and security testing into automated test suite -
+
+    a. We can run smoke tests for every PR
+    b. We can run regressions daily to check if there are any issue within a module
+    c. We can measure page load times by using browser APIs
+    d. We can run JUnit tests on URLs to check the amount of traffic it can handle
+    e. We can integrate SonarQube
+    f. We can implement Auth tests to check if a role get bypassed and is tampered
+
+2. Key metrics and tools used for each type of testing -
+
+    a. For response time, we can use JMeter
+    b. For page load metrics, we can use LightHouse
+    c. For testing CPU usage, we can use Grafana
+    d. For testing Dynamic App, we can use BURP
+    e. For scanning dependencies, we can use Dependency Check
+    f. For Auth tests, we can use Postman
+
+3. Challenges of automating performance and security tests and its solutions -
+
+    a. For testing long test times, we can run short tests in CI
+    b. Use of WebDriver wait to tackle load time errors
+    c. We can run long, full load tests every night or weekly
+    d. If test runs are unstable, we can run them on Kubernetes pods
+    e. We can use data seeding scripts or create stateful scenarios (e.g., users with full carts, large datasets)
+    f. Security scanners often report non-critical or irrelevant issues, to tackle this we can use tuning and allowlists to suppress known-safe findings
+    g. If there are some tools that are heavy, then we can use their Docker versions
+    h. For time consuming scans, we can run lightweight tests on each commit and run full scans every week

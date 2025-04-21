@@ -1,0 +1,26 @@
+1. How I would automate testing for complex UI elements -
+
+    a. For Drag and Drop components, we can use Javascript to automate
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    b. We can use locators such as aria-expanded="true" in WebDriver wait so that selenium waits for these elements to load
+    c. We can also use Actions class to simulate mouse actions such as hover, drag etc
+    d. We can add code in app to expose internal state for Canvas elements and then compare them using Selenium
+
+2. Handling synchronization issues and ensure reliable test execution -
+
+    a. WebDriver wait gives us an option to explicitly wait for a page to load and the perform an activity
+    b. If there are any global state flags, then we can use them to validate an element's visibility
+    c. If there elements that cause synchronization issues, then we can use check points to verify them after every step
+
+3.  Challenges of testing real-time data updates -
+
+    a. This is a common scenario where the data updates before the test is ready to check which leads to a failure
+    b. UI is loaded with a delay
+    c. Actions class has be used
+    d. Assert cannot be used
+
+    Solution -
+
+    a. WebDriver wait is a good option to dynamically wait for an element to load
+    b. Instead of xpaths, we can use CSS selectors
+

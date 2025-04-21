@@ -1,0 +1,30 @@
+1. Strategy for ensuring data integrity and verifying state transitions throughout the test execution -
+
+   a. We can verify our tests on layers such as UI - if we can see changes, API - if our GET response has changes, DB - if this gets updated or not.
+   b. We can make sure that each test runs in isolation
+   c. We can add checkpoints within our test to ensure if the first steps were completed or not
+   d. In case of failures, we can log them along with screenshots
+
+2. Handling scenarios where data dependencies exist between different test cases -
+
+    a. We can move common code into reusable helper methods. If we have to send a JSON to an endpoint, we can create a helper method to prepare a JSON dynamically based on fields that are provided and use it across the project.
+    b. We can also write test scenarios that use other dependencies from test cases in one because this will reduce the chance of flakiness
+            public void userCreation()
+            {
+                urlNavigation();
+                signInWithUserCredentials();
+                createNewUser();
+                singOut();
+            }
+
+            public void assignUserRoleToANewUser()
+            {
+                   userCreation();
+                   assignRole(String userRole);
+            }
+
+3. Examples of how I would use test data and manage it throughout the test run -
+
+    a. We can use test data by storing them in a common file such as "testdata.xlsx" and then using them whenever needed.
+    b. In case of data that needs to be cleared after each run, we can implement cleanup method and call them in @After annotation.
+    c. In case of APIs, we can validate if the data is cleared in DB by executing APIs such a  DELETE /api/whatever

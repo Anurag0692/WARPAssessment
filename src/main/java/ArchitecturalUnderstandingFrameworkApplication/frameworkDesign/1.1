@@ -1,0 +1,43 @@
+1. To build an automation framework for a complex distributed microservices architecture, I would follow following steps -
+
+1. A framework that has TestNG integrated for managing test life cycle
+2. A service layer that can be reused for HTTP requests
+3. Preparation of test suites that can be executed via tags
+4. JIRA integration for logging results
+5. Integration with Testrail/Xray to manage executions against each test case
+6. A layer to cleanup any test data that gets created
+
+
+
+
+
+2.1. Handling asynchronous API interactions -
+
+    a. Whenever APIs don't return results instantly, we can poll the server every 4-5s to see if the results are returned
+    b. We can implement a function to stop polling once results are received
+    c. If ID is returned from an API call, then we can use that ID to check results later
+    d. We can also make use of System logs and extract results based on IDs that are returned
+
+2.2. Handling dynamic data generation and management
+
+    a. We can generate data for our tests instead of hardcoding them. We can create a layer withing our automation to randomly generate values like login credentials, names etc withing an object and them extract them when needed.
+    b. There are libraries like Java Faker that support his
+    c. We can discard this data once execution stops for a more clean way of managing test data
+
+2.3. Handling cross-browser and cross-platform testing complexities
+
+    a. Selenium Grid can be used to test our suites across multiple browsers
+        WebDriver driver = DriverFactory.getDriver("firefox"); -- for firefox
+        WebDriver driver = DriverFactory.getDriver("chrome"); -- fox chrome
+    b.  We can configure tests to run in parallel in GitHub actions
+
+2.4. Handling scalable test execution and reporting
+
+    a. We can run test cases in parallel via Cucumber parallel runner
+    b. For microservices, we can run different tests on its own node
+    c. We can categorize our tests based on tags and then run those tags independently
+
+
+
+
+
